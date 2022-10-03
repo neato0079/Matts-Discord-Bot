@@ -27,3 +27,5 @@ axios
     .post(url, JSON.stringify(command_data), {headers: headers,})
     .catch(error => console.log(error))
     .then(response => console.log(response))
+
+// find out how to add countDownCommand to the .post
