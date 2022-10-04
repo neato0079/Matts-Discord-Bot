@@ -26,6 +26,11 @@ let countDownCommand = {
 axios
     .post(url, JSON.stringify(command_data), {headers: headers,})
     .catch(error => console.log(error))
-    .then(response => console.log(response))
+    .then(response => console.log(`Status:${response.status}`))
+
+axios
+    .post(url, JSON.stringify(countDownCommand), {headers: headers,})
+    .catch(error => console.log(error))
+    .then(response => console.log(`Status:${response.status}`))
 
 // find out how to add countDownCommand to the .post
