@@ -1,7 +1,12 @@
 const nacl = require('tweetnacl');
 const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
 const relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime);
+dayjs.extend(utc)
+dayjs.extend(timezone)
+dayjs.tz.setDefault("America/Los_Angeles");
 
 exports.handler = async (event) => {
   console.log(event)
@@ -48,8 +53,8 @@ exports.handler = async (event) => {
   }
 
   // Handle /jpcountdown Command
-  const currentDate = dayjs();
-  const tripStart = dayjs('2022-12-30 23:00');
+  const currentDate = dayjs.tz();
+  const tripStart = dayjs.tz('2022-12-30 00:00');
   const tripHasStarted = dayjs().isBefore(tripStart)
 
   const countDown = () => {
