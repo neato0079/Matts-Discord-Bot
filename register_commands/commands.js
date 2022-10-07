@@ -35,7 +35,7 @@ const axiosPromises = [
 //   .then(axios.spread((fooResponse, countDownResponse) => {
 //     console.log(`${fooResponse}\n${countDownResponse}`)
 //   }));
-const postCommandsToDiscordBot = () => {
+const postCommandsToDiscordBot = async (axiosPromises) => {
   axios.all(axiosPromises)
     .then(response => console.log(`Status:${response.status}`))
     .catch(error => console.log(error))
