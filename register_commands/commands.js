@@ -35,11 +35,14 @@ const axiosPromises = [
 //   .then(axios.spread((fooResponse, countDownResponse) => {
 //     console.log(`${fooResponse}\n${countDownResponse}`)
 //   }));
-
-axios.all(axiosPromises)
-  .then(response => console.log(`Status:${response.status}`))
-  .catch(error => console.log(error))
+const postCommandsToDiscordBot = () => {
+  axios.all(axiosPromises)
+    .then(response => console.log(`Status:${response.status}`))
+    .catch(error => console.log(error))
+}
 
 // .catch(error => console.log(error))
 // .then(response => console.log(`Status:${response.status}`))
 // find out how to add countDownCommand to the .post
+
+module.exports = {postCommandsToDiscordBot}
