@@ -22,5 +22,8 @@
     "dayjs": "^1.11.5",
     "dotenv": "^16.0.3",
     "tweetnacl": "^1.0.3"
+  },
+  "devDependencies": {
+    "jest": "^29.1.2"
   }
 }
