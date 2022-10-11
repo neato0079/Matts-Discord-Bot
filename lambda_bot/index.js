@@ -48,7 +48,7 @@ exports.handler = async (event) => {
   }
 
   // Handle /jpcountdown Command
-  const currentTime = dayjs();
+  const currentTime = dayjs().subtract(7, 'h');
   const tripStart = dayjs('2022-12-30 00:00');
   // console.log(`Current date/time: ${currentTime.format('MM/DD/YYYY HH:mm')}`)
   // console.log('Trip start:', tripStart.format('MM/DD/YYYY HH:mm'))
@@ -60,7 +60,7 @@ exports.handler = async (event) => {
           return 'Count down finished'
       };
       const daysLeft = tripStart.diff(currentTime, 'days');
-      return `${daysLeft + 1} day(s) left until Japan trip!`
+      return `Current date: ${currentTime.format('MM/DD/YYYY HH:mm')} \n${daysLeft + 1} day(s) left until Japan trip!`
   
   }
 
