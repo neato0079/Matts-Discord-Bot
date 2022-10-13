@@ -9,14 +9,12 @@
 #     It will never write to package.json or any of the package-locks: installs are essentially frozen.
 
 
-name: PR Quality Checks
+name: Jest check
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 jobs:
-  pr-tests:
+  Jest tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
