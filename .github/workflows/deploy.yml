@@ -10,7 +10,11 @@
 
 
 name: PR Quality Checks
-on: [pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
   pr-tests:
     runs-on: ubuntu-latest
