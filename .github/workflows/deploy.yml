@@ -1,1 +1,25 @@
 # my_brain = fetch(internet, cicd_knowledge)
+
+# The main differences between using npm install and npm ci are:
+
+#     The project must have an existing package-lock.json or npm-shrinkwrap.json.
+#     If dependencies in the package lock do not match those in package.json, npm ci will exit with an error, instead of updating the package lock.
+#     npm ci can only install entire projects at a time: individual dependencies cannot be added with this command.
+#     If a node_modules is already present, it will be automatically removed before npm ci begins its install.
+#     It will never write to package.json or any of the package-locks: installs are essentially frozen.
+
+
+name: PR Quality Checks
+on: [pull_request]
+jobs:
+  pr-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.19.2
+      - name: Install dependencies
+        run: npm ci
+      - name: Run unit tests
+        run: npm test
