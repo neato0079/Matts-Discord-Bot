@@ -1,3 +1,4 @@
+const axios = require('axios').default;
 const dayjs = require('dayjs');
 const relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime);
@@ -30,6 +31,15 @@ const countDown = () => {
 }
 
 // console.log(countDown())
+
+const currentExchangeRate = async () => {
+    // get it from an API and return it lol
+
+    // const response = await axios.get(url[, config])
+    // usd = response.usd
+    // jpy = response.tojpy
+    // return `${usd} USD = ${} JPY`
+}
 
 module.exports = {
     daysAndWeeksLeft,
