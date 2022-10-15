@@ -1,7 +1,5 @@
 const nacl = require('tweetnacl');
-const dayjs = require('dayjs');
-const relativeTime = require('dayjs/plugin/relativeTime');
-dayjs.extend(relativeTime);
+const helper = require('./helper')
 
 exports.handler = async (event) => {
   console.log(event)
@@ -48,34 +46,25 @@ exports.handler = async (event) => {
   }
 
   // Handle /jpcountdown Command
-  const currentTime = dayjs().subtract(7, 'h');
-  const tripStart = dayjs('2022-12-30 00:00');
-  // console.log(`Current date/time: ${currentTime.format('MM/DD/YYYY HH:mm')}`)
-  // console.log('Trip start:', tripStart.format('MM/DD/YYYY HH:mm'))
-  
-  const tripHasStarted = dayjs().isBefore(tripStart);
-  
-  const countDown = () => {
-      if (!tripHasStarted) {
-          return 'Count down finished'
-      };
-      const daysLeft = tripStart.diff(currentTime, 'days');
-      return `Current date: ${currentTime.format('MM/DD/YYYY HH:mm')} \n${daysLeft + 1} day(s) left until Japan trip!`
-  
-  }
-
-  if (body.data.name == 'jpcountdown')
+  if (body.data.name == 'jp-countdown')
     return JSON.stringify({  // Note the absence of statusCode
       "type": 4,  // This type stands for answer with invocation shown
-      "data": { "content": countDown() }
+      "data": { "content": helper.countDown() }
     })
 
+  // Handle /weeksjpcountdown Command
+  if (body.data.name == 'weeks-jp-countdown')
+    return JSON.stringify({  // Note the absence of statusCode
+      "type": 4,  // This type stands for answer with invocation shown
+      "data": { "content": helper.daysAndWeeksLeft() }
+    })
 
   console.log('Reach end of file :(')
   return {
     statusCode: 404  // If no handler implemented for Discord's request
   }
 };
+
 
 /*
 TODO:
