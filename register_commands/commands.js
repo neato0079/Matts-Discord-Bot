@@ -18,21 +18,14 @@ let command_data = {
 }
 
 let countDownCommand = {
-  'name': 'jp-countdown', // TODO: think of a cooler name
+  'name': 'jpcountdown', // TODO: think of a cooler name
   'type': 1,
   'description': 'replies with number of days until japan trip ;/',
 }
 
-let weeksCountDownCommand = {
-  'name': 'weeks-jp-countdown', // TODO: think of a cooler name
-  'type': 1,
-  'description': 'replies with number of weeks and days until japan trip ;/',
-}
-
 const axiosPromises = [
   axios.post(url, JSON.stringify(command_data), { headers: headers, }),
-  axios.post(url, JSON.stringify(countDownCommand), { headers: headers, }),
-  axios.post(url, JSON.stringify(weeksCountDownCommand), { headers: headers, })
+  axios.post(url, JSON.stringify(countDownCommand), { headers: headers, })
 ]
 
 // axios.all(axiosPromises)
