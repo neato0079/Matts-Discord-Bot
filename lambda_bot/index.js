@@ -78,5 +78,8 @@ exports.handler = async (event) => {
 };
 
 /*
-
+TODO:
+  Japan stuff:
+    -Create a lambda function that runs once every Friday(this is the day of the departure flight), and tells us how many weeks left
+    Create a slash command that returns the current exchange rate (try using this API https://exchangeratesapi.io/)
 */
