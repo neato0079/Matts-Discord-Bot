@@ -1,17 +1,18 @@
 {
-  "name": "serverless_discord",
+  "name": "matts-discord-bot",
   "version": "1.0.0",
   "description": "- `command.js` sends a `POST` request to `discord bot`. This `POST` request includes authorization headers and data about the command. - `discord bot` is invoked by the `discord client` when a user inputs a slash command. - When invoked, `discord bot` makes a call to `API Gateway`. - `API Gateway` triggers a `Lambda` function. In this case `index.js` is ran. - `index.js` contains the logic to handle a slash command.  - `index.js` sends `API Gateway` the return value of the slash command logic. `API Gateway` sends this value to `discord bot`. - `discord bot` displays the returned values in the `discord client`",
-  "main": "scratch.js",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
   "scripts": {
-    "test": "jest --verbose",
-    "coverage": "jest --verbose --coverage"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/neato0079/Matts-Discord-Bot.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -19,12 +20,9 @@
   },
   "homepage": "https://github.com/neato0079/Matts-Discord-Bot#readme",
   "dependencies": {
-    "1.1.0": "^1.0.0",
+    "axios": "^1.1.3",
     "dayjs": "^1.11.5",
     "dotenv": "^16.0.3",
     "tweetnacl": "^1.0.3"
-  },
-  "devDependencies": {
-    "jest": "^29.1.2"
   }
 }
