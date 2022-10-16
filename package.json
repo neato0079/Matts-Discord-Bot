@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose",
+    "coverage": "jest --verbose --coverage"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,8 @@
     "dayjs": "^1.11.5",
     "dotenv": "^16.0.3",
     "tweetnacl": "^1.0.3"
+  },
+  "devDependencies": {
+    "jest": "^29.2.0"
   }
 }
