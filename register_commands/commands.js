@@ -29,10 +29,17 @@ let weeksCountDownCommand = {
   'description': 'replies with number of weeks and days until japan trip ;/',
 }
 
+let currentExchangeRate = {
+  'name': 'current-exchange-rate', // TODO: think of a cooler name
+  'type': 1,
+  'description': 'replies current USD to JPY exchange rate ;/',
+}
+
 const axiosPromises = [
   axios.post(url, JSON.stringify(command_data), { headers: headers, }),
   axios.post(url, JSON.stringify(countDownCommand), { headers: headers, }),
-  axios.post(url, JSON.stringify(weeksCountDownCommand), { headers: headers, })
+  axios.post(url, JSON.stringify(weeksCountDownCommand), { headers: headers, }),
+  axios.post(url, JSON.stringify(currentExchangeRate), { headers: headers, })
 ]
 
 // axios.all(axiosPromises)
