@@ -39,7 +39,8 @@ const currentExchangeRate = async () => {
     base: 'USD'
   }
   const response = await axios.get(url)
-  return response.data.result
+  const USDtoJPY = response.data.result
+  return `1 USD = ${USDtoJPY.toFixed(2)} JPY`
 }
 
 module.exports = {
