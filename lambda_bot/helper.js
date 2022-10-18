@@ -43,5 +43,6 @@ const currentExchangeRate = async () => {
 
 module.exports = {
     daysAndWeeksLeft,
-    countDown
+    countDown,
+    currentExchangeRate
 }
