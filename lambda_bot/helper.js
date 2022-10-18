@@ -35,12 +35,12 @@ const countDown = () => {
 const currentExchangeRate = async () => {
   // get it from an API and return it lol
   const url = 'https://api.exchangerate.host/convert?from=USD&to=JPY';
-  const exchangeRateConfig = {
-    base: 'USD'
-  }
+  // const exchangeRateConfig = {
+  //   base: 'USD'
+  // }
   const response = await axios.get(url)
   const USDtoJPY = response.data.result
-  return `1 USD = ${USDtoJPY.toFixed(2)} JPY`
+  console.log(`1 USD = ${USDtoJPY.toFixed(2)} JPY`)
 }
 
 module.exports = {
