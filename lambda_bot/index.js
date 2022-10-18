@@ -63,19 +63,17 @@ exports.handler = async (event) => {
   if (body.data.name == 'current-exchange-rate'){
       return JSON.stringify({ 
         "type": 4,  
-        "data": { "content": helper.currentExchangeRate() }
+        "data": { "content": await helper.currentExchangeRate() }
       })
   }
 
   // Handle /Trip-info Command
   if (body.data.name == 'trip-info'){
-    async () => {
-      const info = `Flight date: Dec 30\n${helper.daysAndWeeksLeft()}/n${await helper.currentExchangeRate()}`
+      const info = `Flight date: Dec 30\n${helper.daysAndWeeksLeft()}\n${await helper.currentExchangeRate()}`
       return JSON.stringify({ 
         "type": 4,  
         "data": { "content": info }
       })
-    }
   }
 
   console.log('Reach end of file :(')
