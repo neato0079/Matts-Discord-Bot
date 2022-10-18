@@ -14,8 +14,8 @@ const daysLeft = tripStart.diff(currentTime, 'days') + 1;
 const daysAndWeeksLeft = () => {
   const weeks = Math.floor(daysLeft / 7);
   const days = daysLeft % 7;
-  if(days === 0){
-    return`${weeks} week(s) left until fly me to Japan!`
+  if (days === 0) {
+    return `${weeks} week(s) left until fly me to Japan!`
   }
   return `${weeks} week(s) and ${days} day(s) left until fly me to Japan!`
 }
@@ -23,26 +23,26 @@ const daysAndWeeksLeft = () => {
 // console.log(daysAndWeeksLeft())
 
 const countDown = () => {
-    if (!tripHasStarted) {
-        return 'Count down finished'
-    };
-    return `Current date: ${currentTime.format('MM/DD/YYYY HH:mm')} \n${daysLeft} day(s) left until Japan trip!`
+  if (!tripHasStarted) {
+    return 'Count down finished'
+  };
+  return `Current date: ${currentTime.format('MM/DD/YYYY HH:mm')} \n${daysLeft} day(s) left until Japan trip!`
 
 }
 
 // console.log(countDown())
 
 const currentExchangeRate = async () => {
-    // get it from an API and return it lol
-
-    // const response = await axios.get(url[, config])
-    // usd = response.usd
-    // jpy = response.tojpy
-    // return `${usd} USD = ${} JPY`
+  // get it from an API and return it lol
+  const url = 'https://api.exchangerate.host/latest';
+  // const response = await axios.get(url[, config])
+  // usd = response.usd
+  // jpy = response.tojpy
+  // return `${usd} USD = ${} JPY`
 }
 
 module.exports = {
-    daysAndWeeksLeft,
-    countDown,
-    currentExchangeRate
+  daysAndWeeksLeft,
+  countDown,
+  currentExchangeRate
 }
