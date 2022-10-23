@@ -35,11 +35,18 @@ let currentExchangeRate = {
   'description': 'replies current USD to JPY exchange rate ;/',
 }
 
+let tripInfo = {
+  'name': 'trip-info', // TODO: think of a cooler name
+  'type': 1,
+  'description': 'replies with all trip info ;/',
+}
+
 const axiosPromises = [
   axios.post(url, JSON.stringify(command_data), { headers: headers, }),
   axios.post(url, JSON.stringify(countDownCommand), { headers: headers, }),
   axios.post(url, JSON.stringify(weeksCountDownCommand), { headers: headers, }),
-  axios.post(url, JSON.stringify(currentExchangeRate), { headers: headers, })
+  axios.post(url, JSON.stringify(currentExchangeRate), { headers: headers, }),
+  axios.post(url, JSON.stringify(tripInfo), { headers: headers, })
 ]
 
 // axios.all(axiosPromises)

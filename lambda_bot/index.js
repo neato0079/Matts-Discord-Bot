@@ -45,19 +45,36 @@ exports.handler = async (event) => {
     })
   }
 
-  // Handle /jpcountdown Command
+  // Handle /jp-countdown Command
   if (body.data.name == 'jp-countdown')
     return JSON.stringify({  // Note the absence of statusCode
       "type": 4,  // This type stands for answer with invocation shown
       "data": { "content": helper.countDown() }
     })
 
-  // Handle /weeksjpcountdown Command
+  // Handle /weeks-jp-countdown Command
   if (body.data.name == 'weeks-jp-countdown')
-    return JSON.stringify({  // Note the absence of statusCode
-      "type": 4,  // This type stands for answer with invocation shown
+    return JSON.stringify({  
+      "type": 4,  
       "data": { "content": helper.daysAndWeeksLeft() }
     })
+
+  // Handle /USD-powerlevel Command
+  if (body.data.name == 'current-exchange-rate'){
+      return JSON.stringify({ 
+        "type": 4,  
+        "data": { "content": await helper.currentExchangeRate() }
+      })
+  }
+
+  // Handle /Trip-info Command
+  if (body.data.name == 'trip-info'){
+      const info = `Flight date: Dec 30\n${helper.daysAndWeeksLeft()}\n${await helper.currentExchangeRate()}`
+      return JSON.stringify({ 
+        "type": 4,  
+        "data": { "content": info }
+      })
+  }
 
   console.log('Reach end of file :(')
   return {
@@ -70,5 +87,5 @@ exports.handler = async (event) => {
 TODO:
   Japan stuff:
     -Create a lambda function that runs once every Friday(this is the day of the departure flight), and tells us how many weeks left
-    Create a slash command that returns the current exchange rate (try using this API https://exchangeratesapi.io/)
+    - *DONE* Create a slash command that returns the current exchange rate (try using this API https://exchangeratesapi.io/)
 */
