@@ -9,9 +9,9 @@ const tripStart = dayjs('2022-12-30 00:00');
 const tripHasStarted = dayjs().isBefore(tripStart);
 const daysLeft = tripStart.diff(currentTime, 'days') + 1;
 
-const daysAndWeeksLeft = () => {
-  const weeks = Math.floor(daysLeft / 7);
-  const days = daysLeft % 7;
+const daysAndWeeksLeft = (defaultDays = daysLeft) => {
+  const weeks = Math.floor(defaultDays / 7);
+  const days = defaultDays % 7;
   if (days === 0) {
     return `${weeks} week(s) left until fly me to Japan!`
   }
