@@ -9,7 +9,7 @@ afterEach(() => {
 
 describe('postCommandsToDiscordBot', () => {
 
-    test.only('Handles array of only resolved promises.', async () => {
+    test('Handles array of only resolved promises.', async () => {
         // set up mocks
         const resolvedPromise = axios.post.mockResolvedValue();
         const resolvedPromise2 = axios.post.mockResolvedValue();
@@ -20,19 +20,7 @@ describe('postCommandsToDiscordBot', () => {
         await expect(test.resolves)
     });
 
-    test('Handles a mix of resolved and rejected promises.', async () => {
-        // set up mocks
+    test.todo('Handles a mix of resolved and rejected promises.');
 
-        // test
-        
-        // assert
-    });
-
-    test('Handles array only rejected promises.', async () => {
-        // set up mocks
-
-        // test
-        
-        // assert
-    });
+    test.todo('Handles array only rejected promises.');
 });
