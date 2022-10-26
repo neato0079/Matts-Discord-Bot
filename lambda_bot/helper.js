@@ -44,7 +44,7 @@ const currentExchangeRate = async () => {
       const USDtoJPY = response.data.result
       return `1 USD = ${USDtoJPY.toFixed(2)} JPY`
     } catch (e) {
-      if (operation.retry(e)) { return; }
+      if (operation.retry(e)) { throw e; }
     }
   });
 }
