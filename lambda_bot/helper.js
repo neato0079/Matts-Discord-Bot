@@ -28,7 +28,7 @@ const countDown = () => {
 
 // set up retry config
 const operation = retry.operation({
-  retries: 3,
+  retries: 1, //change to 3 after test passes
   factor: 3,
   minTimeout: 1 * 1000,
   maxTimeout: 60 * 1000,
@@ -36,17 +36,18 @@ const operation = retry.operation({
 });
 
 const currentExchangeRate = async () => {
-  operation.attempt(async (currentAttempt) => {
-    console.log('sending request: ', currentAttempt, ' attempt');
+  // operation.attempt(async (currentAttempt) => {
+    // console.log('sending request: ', currentAttempt, ' attempt');
     try {
       const url = 'https://api.exchangerate.host/convert?from=USD&to=JPY';
       const response = await axios.get(url)
       const USDtoJPY = response.data.result
       return `1 USD = ${USDtoJPY.toFixed(2)} JPY`
     } catch (e) {
-      if (operation.retry(e)) { throw e; }
+      // if (operation.retry(e)) { throw new Error; }
+      throw e
     }
-  });
+  // });
 }
 
 module.exports = {
