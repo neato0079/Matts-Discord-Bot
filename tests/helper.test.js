@@ -4,7 +4,7 @@ const {
     currentExchangeRate
 } = require('../lambda_bot/helper');
 
-const axios = require('axios').default;
+const mockAxios = require('axios').default;
 
 jest.mock('axios');
 
@@ -18,6 +18,7 @@ describe('daysAndWeeksLeft', () => {
         // set up mocks
         const daysLeft = 14
         // test and assert
+        expect.assertions(1);
         expect(daysAndWeeksLeft(daysLeft)).toBe('2 week(s) left until fly me to Japan!');
     })
 });
@@ -26,11 +27,22 @@ describe('currentExchangeRate', () => {
 
     test.skip('Returns USD to JPY exchange rate', () => {
         // set up mocks
-        axios.get.mocked
+    })
+    
+    test('Retries get request 3 times', async () => {
+        // axios.get.mockRejectedValue(new Error('Async error message'));
+        // axios.get.jest.fn(new Promise.reject);
+        // mockAxios.get.mockImplementationOnce(() => { Promise.reject})
+        expect.assertions(1);
+        // const result = await currentExchangeRate()
+        return async () => expect(await currentExchangeRate()).toBeDefined
     })
 
-    test('Retries get request 3 times', () => {
-
-    })
+    test('Retries get request 3 times', async () => {
+        expect.assertions(1);
+        return currentExchangeRate().then((data) => {
+          expect(data).toBeDefined;
+        });
+      });
 
 });
