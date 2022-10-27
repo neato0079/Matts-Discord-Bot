@@ -29,20 +29,17 @@ describe('currentExchangeRate', () => {
         // set up mocks
     })
     
-    test('Retries get request 3 times', async () => {
-        // axios.get.mockRejectedValue(new Error('Async error message'));
-        // axios.get.jest.fn(new Promise.reject);
-        // mockAxios.get.mockImplementationOnce(() => { Promise.reject})
+    test('Handles error', async () => {
+        mockAxios.get.mockRejectedValue(new Error('Async error message'));
         expect.assertions(1);
-        // const result = await currentExchangeRate()
-        return async () => expect(await currentExchangeRate()).toBeDefined
+        await expect(currentExchangeRate()).rejects.toThrow('Async error message')
     })
 
-    test('Retries get request 3 times', async () => {
-        expect.assertions(1);
-        return currentExchangeRate().then((data) => {
-          expect(data).toBeDefined;
-        });
-      });
+    // test('Retries get request 3 times', async () => {
+    //     expect.assertions(1);
+    //     return currentExchangeRate().then((data) => {
+    //       expect(data).toBeDefined;
+    //     });
+    //   });
 
 });
