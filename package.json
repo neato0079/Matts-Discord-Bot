@@ -20,6 +20,7 @@
   "homepage": "https://github.com/neato0079/Matts-Discord-Bot#readme",
   "dependencies": {
     "axios": "^1.1.0",
+    "axios-retry": "^3.3.1",
     "dayjs": "^1.11.5",
     "dotenv": "^16.0.3",
     "retry": "^0.13.1",

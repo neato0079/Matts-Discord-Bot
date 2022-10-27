@@ -7,14 +7,17 @@ const {
 const mockAxios = require('axios').default;
 
 jest.mock('axios');
+afterEach(() => {
+    jest.resetAllMocks();
+});
 
 afterEach(() => {
-  jest.resetAllMocks();
+    jest.resetAllMocks();
 });
 
 describe('daysAndWeeksLeft', () => {
 
-    test('Returns time in only weeks if the number of days until the trip is divisible by seven.' , () => {
+    test('Returns time in only weeks if the number of days until the trip is divisible by seven.', () => {
         // set up mocks
         const daysLeft = 14
         // test and assert
@@ -28,11 +31,11 @@ describe('currentExchangeRate', () => {
     test.skip('Returns USD to JPY exchange rate', () => {
         // set up mocks
     })
-    
+
     test('Handles error', async () => {
-        mockAxios.get.mockRejectedValue(new Error('Async error message'));
+        mockAxios.get.mockRejectedValue(new Error());
         expect.assertions(1);
-        await expect(currentExchangeRate()).rejects.toThrow('Async error message')
+        await expect(currentExchangeRate()).rejects.toBeDefined()
     })
 
     // test('Retries get request 3 times', async () => {
