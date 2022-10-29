@@ -1,5 +1,6 @@
 const axios = require('axios').default;
-const axiosRetry = require('axios-retry');
+// const axiosRetry = require('axios-retry');
+const retry = require('retry')
 const dayjs = require('dayjs');
 const relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime);
@@ -27,17 +28,33 @@ const countDown = () => {
 }
 
 const currentExchangeRate = async () => {
-  axiosRetry(axios, { retries: 2 });
+  // axiosRetry(axios, { 
+  //   retries: 3,
+  //   onRetry: (retryCount, error, requestConfig) => { return retryCount + error; }
+  //  });
+  const operation = retry.operation({
+    retries: 1,
+    factor: 3,
+    minTimeout: 1 * 1000,
+    maxTimeout: 60 * 1000,
+    randomize: true,
+  });
   const url = 'https://api.exchangerate.host/convert?from=USD&to=JPY';
-  // const response = await axios.get(url)
-  // const response = await axios.get('https://no-such-server.blabla')
-  const response = await axios.get('http://webcode.me')
-  // console.log(response.status)
-  return 'response'
-  // const USDtoJPY = response.data.result
-  // return `1 USD = ${USDtoJPY.toFixed(2)} JPY`
 
-  // });
+  operation.attempt(async (currentAttempt) => {
+    console.log('sending request: ', currentAttempt, ' attempt');
+    try {
+
+      const response = await axios.get(url);
+      const USDtoJPY = response.data.result
+      return `1 USD = ${USDtoJPY.toFixed(2)} JPY`
+
+    } catch (e) {
+      if (!operation.retry(e)) {
+        throw e;
+      }
+    }
+  });
   }
 
 currentExchangeRate()
