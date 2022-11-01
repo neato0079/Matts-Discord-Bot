@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 // const axiosRetry = require('axios-retry');
-const retry = require('retry')
+// const retry = require('retry')
 const dayjs = require('dayjs');
 const relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime);
@@ -27,38 +27,60 @@ const countDown = () => {
 
 }
 
+// const currentExchangeRate = async () => {
+
+//   const url = 'https://api.exchangerate.host/convert?from=USD&to=JPY';
+
+//   try {
+//     console.log('inside try block')
+//     const response = await axios.get(url);
+//     console.log('line after first await')
+//     const USDtoJPY = response.data.result
+//     console.log(`1 USD = ${USDtoJPY.toFixed(2)} JPY`)
+//     return `1 USD = ${USDtoJPY.toFixed(2)} JPY`
+
+//   } catch (e) {
+//     console.log('inside catch block')
+//     console.log(e)
+//     throw e;
+//   }
+// };
+
+
 const currentExchangeRate = async () => {
-  // axiosRetry(axios, { 
-  //   retries: 3,
-  //   onRetry: (retryCount, error, requestConfig) => { return retryCount + error; }
-  //  });
-  const operation = retry.operation({
-    retries: 2,
-    factor: 3,
-    minTimeout: 1 * 1000,
-    maxTimeout: 5 * 1000,
-    randomize: true,
-  });
+
   const url = 'https://api.exchangerate.host/convert?from=USD&to=JPY';
 
-  operation.attempt(async (currentAttempt) => {
-    console.log('sending request: ', currentAttempt, ' attempt');
-    try {
-
-      const response = await axios.get(url);
-      const USDtoJPY = response.data.result
-      // console.log(`1 USD = ${USDtoJPY.toFixed(2)} JPY`)
-      return `1 USD = ${USDtoJPY.toFixed(2)} JPY`
-
-    } catch (e) {
-      if (!operation.retry(e)) {
-        throw e;
-      }
+  return new Promise((resolve, reject) => {
+    let NumberOfRetries = 3;
+    const retry = () => {
+      axios.get(url)
+      .then((response) => {
+        const USDtoJPY = response.data.result
+        // console.log(`1 USD = ${USDtoJPY.toFixed(2)} JPY`)
+        resolve(`1 USD = ${USDtoJPY.toFixed(2)} JPY`)
+      })
+      .catch((error) => {
+        --NumberOfRetries
+        if(NumberOfRetries > 0){
+          console.log(`Retrying...`)
+          retry()
+        } else {
+          reject(error);
+        }
+      })
     }
-  });
-  }
+    retry();
+  })
+};
 
-currentExchangeRate()
+// const APICallRetry = async(APIcall) => {
+//   try {
+//     await APIcall.then((response) => {})
+//   }
+// }
+
+console.log(currentExchangeRate())
 
 module.exports = {
   daysAndWeeksLeft,
