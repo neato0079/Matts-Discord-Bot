@@ -33,10 +33,10 @@ const currentExchangeRate = async () => {
   //   onRetry: (retryCount, error, requestConfig) => { return retryCount + error; }
   //  });
   const operation = retry.operation({
-    retries: 1,
+    retries: 2,
     factor: 3,
     minTimeout: 1 * 1000,
-    maxTimeout: 60 * 1000,
+    maxTimeout: 5 * 1000,
     randomize: true,
   });
   const url = 'https://api.exchangerate.host/convert?from=USD&to=JPY';
@@ -47,6 +47,7 @@ const currentExchangeRate = async () => {
 
       const response = await axios.get(url);
       const USDtoJPY = response.data.result
+      // console.log(`1 USD = ${USDtoJPY.toFixed(2)} JPY`)
       return `1 USD = ${USDtoJPY.toFixed(2)} JPY`
 
     } catch (e) {
