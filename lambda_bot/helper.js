@@ -14,38 +14,18 @@ const daysAndWeeksLeft = (defaultDays = daysLeft) => {
   const weeks = Math.floor(defaultDays / 7);
   const days = defaultDays % 7;
   if (days === 0) {
-    return `${weeks} week(s) left until fly me to Japan!`
+    return `${weeks} week(s) left until fly me to Japan!`;
   }
-  return `${weeks} week(s) and ${days} day(s) left until fly me to Japan!`
+  return `${weeks} week(s) and ${days} day(s) left until fly me to Japan!`;
 }
 
 const countDown = () => {
   if (!tripHasStarted) {
-    return 'Count down finished'
+    return 'Count down finished';
   };
-  return `Current date: ${currentTime.format('MM/DD/YYYY HH:mm')} \n${daysLeft} day(s) left until Japan trip!`
+  return `Current date: ${currentTime.format('MM/DD/YYYY HH:mm')} \n${daysLeft} day(s) left until Japan trip!`;
 
 }
-
-// const currentExchangeRate = async () => {
-
-//   const url = 'https://api.exchangerate.host/convert?from=USD&to=JPY';
-
-//   try {
-//     console.log('inside try block')
-//     const response = await axios.get(url);
-//     console.log('line after first await')
-//     const USDtoJPY = response.data.result
-//     console.log(`1 USD = ${USDtoJPY.toFixed(2)} JPY`)
-//     return `1 USD = ${USDtoJPY.toFixed(2)} JPY`
-
-//   } catch (e) {
-//     console.log('inside catch block')
-//     console.log(e)
-//     throw e;
-//   }
-// };
-
 
 const currentExchangeRate = async () => {
 
@@ -55,32 +35,30 @@ const currentExchangeRate = async () => {
     let NumberOfRetries = 3;
     const retry = () => {
       axios.get(url)
-      .then((response) => {
-        const USDtoJPY = response.data.result
-        // console.log(`1 USD = ${USDtoJPY.toFixed(2)} JPY`)
-        resolve(`1 USD = ${USDtoJPY.toFixed(2)} JPY`)
-      })
-      .catch((error) => {
-        --NumberOfRetries
-        if(NumberOfRetries > 0){
-          console.log(`Retrying...`)
-          retry()
-        } else {
-          reject(error);
-        }
-      })
+        .then((response) => {
+          if(response.status !== 200) {
+            return reject(`BAD DATA! Received status code: ${response.status}\nData:${response.data}`);
+          }
+          const USDtoJPY = response.data.result;
+          // console.log(`1 USD = ${USDtoJPY.toFixed(2)} JPY`)
+          // console.log(response.status)
+          resolve(`1 USD = ${USDtoJPY.toFixed(2)} JPY`);
+        })
+        .catch((error) => {
+          --NumberOfRetries;
+          if (NumberOfRetries > 0) {
+            console.log(`Retrying...`)
+            retry();
+          } else {
+            reject(error);
+          }
+        })
     }
     retry();
   })
 };
 
-// const APICallRetry = async(APIcall) => {
-//   try {
-//     await APIcall.then((response) => {})
-//   }
-// }
-
-console.log(currentExchangeRate())
+// console.log(currentExchangeRate());
 
 module.exports = {
   daysAndWeeksLeft,
