@@ -1,11 +1,15 @@
 # Template taken from this source: https://github.com/serverless/github-action
 
-name: Deploy master branch
+name: Deploy main branch
 
 on:
   push:
     branches:
-      - master
+      - main
+
+functions:
+  discord-command:
+    handler: lambda_bot/index.handler
 
 jobs:
   deploy:
@@ -13,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [14.x]
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
