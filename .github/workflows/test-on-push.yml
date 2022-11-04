@@ -12,7 +12,7 @@
 name: Jest check
 on:
   push:
-    branches: [ main ]
+    branches: '*'
 jobs:
   Jest_tests:
     runs-on: ubuntu-latest
