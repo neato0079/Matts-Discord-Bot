@@ -47,8 +47,8 @@ exports.handler = async (event) => {
 
   // Handle /jp-countdown Command
   if (body.data.name == 'jp-countdown')
-    return JSON.stringify({  // Note the absence of statusCode
-      "type": 4,  // This type stands for answer with invocation shown
+    return JSON.stringify({ 
+      "type": 4, 
       "data": { "content": helper.countDown() }
     })
 
