@@ -39,7 +39,7 @@ const currentExchangeRate = async () => {
       axios.get(url)
         .then((response) => {
           if (response.status !== 200) {
-            return reject(`BAD DATA! Received status code: ${response.status}\nData:${response.data}`);
+            reject(`BAD DATA! Received status code: ${response.status}\nData:${response.data}`);
           }
           const USDtoJPY = response.data.result;
           resolve(`1 USD = ${USDtoJPY.toFixed(2)} JPY`);
