@@ -11,8 +11,10 @@ const tripHasStarted = dayjs().isBefore(tripStart);
 const daysLeft = tripStart.diff(currentTime, 'days') + 1;
 
 const daysAndWeeksLeft = (defaultDays = daysLeft) => {
+
   const weeks = Math.floor(defaultDays / 7);
   const days = defaultDays % 7;
+
   if (days === 0) {
     return `${weeks} week(s) left until fly me to Japan!`;
   }
@@ -36,12 +38,10 @@ const currentExchangeRate = async () => {
     const retry = () => {
       axios.get(url)
         .then((response) => {
-          if(response.status !== 200) {
+          if (response.status !== 200) {
             return reject(`BAD DATA! Received status code: ${response.status}\nData:${response.data}`);
           }
           const USDtoJPY = response.data.result;
-          // console.log(`1 USD = ${USDtoJPY.toFixed(2)} JPY`)
-          // console.log(response.status)
           resolve(`1 USD = ${USDtoJPY.toFixed(2)} JPY`);
         })
         .catch((error) => {
@@ -57,8 +57,6 @@ const currentExchangeRate = async () => {
     retry();
   })
 };
-
-// console.log(currentExchangeRate());
 
 module.exports = {
   daysAndWeeksLeft,
