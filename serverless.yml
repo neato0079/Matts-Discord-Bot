@@ -4,6 +4,7 @@ provider:
   name: aws
   runtime: nodejs14.x
   stage: dev
+  profile: discord
 
 functions:
   handle-slash-commands:
