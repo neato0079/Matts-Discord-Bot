@@ -8,11 +8,11 @@
 #     If a node_modules is already present, it will be automatically removed before npm ci begins its install.
 #     It will never write to package.json or any of the package-locks: installs are essentially frozen.
 
-
+# TODO: Add ESLint
 name: Jest check
 on:
   push:
-    branches: [ main ]
+    branches: '*'
 jobs:
   Jest_tests:
     runs-on: ubuntu-latest
