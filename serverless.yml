@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: nodejs14.x
   stage: dev
-  profile: discord
+  profile: githubActionsUser
 
 functions:
   handle-slash-commands:
