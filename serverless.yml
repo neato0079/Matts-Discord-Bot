@@ -3,7 +3,6 @@ service: discord
 provider:
   name: aws
   runtime: nodejs14.x
-  profile: discordBot
 
 functions:
   handle-discord-commands:
