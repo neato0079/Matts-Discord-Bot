@@ -41,7 +41,7 @@ exports.handler = async (event) => {
     console.log('HAPPY RESPONSE')
     return JSON.stringify({  // Note the absence of statusCode
       "type": 4,  // This type stands for answer with invocation shown
-      "data": { "content": "poo" }
+      "data": { "content": "did it" }
     })
   }
 
