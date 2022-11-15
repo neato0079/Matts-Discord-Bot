@@ -21,6 +21,10 @@ jobs:
     - run: npm ci
     - name: Register slash commands
       run: npm run command-go
+      env:
+        APP_ID: ${{ secrets.APP_ID }}
+        GUILD_ID: ${{ secrets.GUILD_ID }}
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
     - name: serverless deploy
       uses: serverless/github-action@v3.1
       with:
