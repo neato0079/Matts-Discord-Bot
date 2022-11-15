@@ -41,6 +41,12 @@ let tripInfo = {
   'description': 'replies with all trip info ;/',
 }
 
+let test = {
+  'name': 'test', // TODO: think of a cooler name
+  'type': 1,
+  'description': 'replies with all trip info ;/',
+}
+
 const axiosPromises = [
   axios.post(url, JSON.stringify(command_data), { headers: headers, }),
   axios.post(url, JSON.stringify(countDownCommand), { headers: headers, }),

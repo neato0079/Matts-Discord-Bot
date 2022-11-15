@@ -5,7 +5,8 @@
   "main": "scratch.js",
   "scripts": {
     "test": "jest --verbose",
-    "coverage": "jest --verbose --coverage"
+    "coverage": "jest --verbose --coverage",
+    "command-go": "node register_commands/commands.js"
   },
   "repository": {
     "type": "git",
