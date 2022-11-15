@@ -76,6 +76,14 @@ exports.handler = async (event) => {
       })
   }
 
+  // test auto command reg
+  if (body.data.name == 'test'){
+    return JSON.stringify({ 
+      "type": 4,  
+      "data": { "content": "Register complete!!!" }
+    })
+}
+
   console.log('Reach end of file :(')
   return {
     statusCode: 404  // If no handler implemented for Discord's request
