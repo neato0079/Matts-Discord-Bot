@@ -48,11 +48,11 @@ let test = {
 }
 
 const axiosPromises = [
-  axios.post(url, JSON.stringify(command_data), { headers: headers, }),
-  axios.post(url, JSON.stringify(countDownCommand), { headers: headers, }),
-  axios.post(url, JSON.stringify(weeksCountDownCommand), { headers: headers, }),
-  axios.post(url, JSON.stringify(currentExchangeRate), { headers: headers, }),
-  axios.post(url, JSON.stringify(tripInfo), { headers: headers, }),
+//   axios.post(url, JSON.stringify(command_data), { headers: headers, }),
+//   axios.post(url, JSON.stringify(countDownCommand), { headers: headers, }),
+//   axios.post(url, JSON.stringify(weeksCountDownCommand), { headers: headers, }),
+//   axios.post(url, JSON.stringify(currentExchangeRate), { headers: headers, }),
+//   axios.post(url, JSON.stringify(tripInfo), { headers: headers, }),
   axios.post(url, JSON.stringify(test), { headers: headers, })
 ]
 
