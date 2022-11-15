@@ -3,8 +3,8 @@ service: discord
 provider:
   name: aws
   runtime: nodejs14.x
-  stage: dev
+  profile: discordBot
 
 functions:
-  handle-slash-commands:
+  handle-discord-commands:
     handler: lambda_bot/index.handler
