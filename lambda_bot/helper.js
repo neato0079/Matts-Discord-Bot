@@ -58,6 +58,9 @@ const currentExchangeRate = async () => {
   })
 };
 
+// TODO: Handle 429 error
+
+
 module.exports = {
   daysAndWeeksLeft,
   countDown,

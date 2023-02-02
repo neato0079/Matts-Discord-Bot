@@ -3,7 +3,7 @@ const axios = require('axios').default;
 // console.log(`App id: ${process.env.APP_ID}`)
 // console.log(`guild id: ${process.env.GUILD_ID}`)
 // console.log(`Bot token: ${process.env.BOT_TOKEN}`)
-let url = `https://discord.com/api/v8/applications/${process.env.APP_ID}/guilds/${process.env.GUILD_ID}/commands`
+let url = `https://discord.com/api/v8/applications/${process.env.APP_ID}/guilds/${process.env.GUILD_ID2}/commands`
 //let url = `https://discord.com/api/v10/applications/<my_application_id>/guilds/<guild_id>/commands`
 
 const headers = {
@@ -48,9 +48,9 @@ let test = {
 }
 
 const axiosPromises = [
-  axios.post(url, JSON.stringify(command_data), { headers: headers, }),
-  axios.post(url, JSON.stringify(countDownCommand), { headers: headers, }),
-  axios.post(url, JSON.stringify(weeksCountDownCommand), { headers: headers, }),
+  // axios.post(url, JSON.stringify(command_data), { headers: headers, }),
+  // axios.post(url, JSON.stringify(countDownCommand), { headers: headers, }),
+  // axios.post(url, JSON.stringify(weeksCountDownCommand), { headers: headers, }),
   axios.post(url, JSON.stringify(currentExchangeRate), { headers: headers, }),
   axios.post(url, JSON.stringify(tripInfo), { headers: headers, }),
   axios.post(url, JSON.stringify(test), { headers: headers, })
