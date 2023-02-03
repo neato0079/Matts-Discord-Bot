@@ -7,7 +7,7 @@ A discord bot for a discord server where friends were planning and coordinating 
 
 # Project Workflow:
 - `command.js` sends a `POST` request to `discord bot`. This `POST` request includes authorization headers and data about the command.
-- `discord bot` is invoked by the `discord client` when a user inputs a slash command.
+- `discord bot` (which is registered and set up in the discord developer portal) is invoked by the `discord client` when a user inputs a slash command.
 - When invoked, `discord bot` makes a call to `API Gateway`.
 - `API Gateway` triggers a `Lambda` function. In this case `index.js` is ran.
 - `index.js` contains the logic to handle a slash command. 
