@@ -7,3 +7,13 @@
 - `index.js` contains the logic to handle a slash command. 
 - `index.js` sends `API Gateway` the return value of the slash command logic. `API Gateway` sends this value to `discord bot`.
 - `discord bot` displays the returned values in the `discord client`
+
+
+# Example of Discordbot Function
+User inputs a slash command:
+
+![alt text](https://raw.githubusercontent.com/neato0079/Matts-Discord-Bot/5ad85bafcaea2caff47065a936c1cb7fb53bbba7/img/example1.png)
+
+Discord bot responds with the relevant output:
+
+![alt text](https://raw.githubusercontent.com/neato0079/Matts-Discord-Bot/5ad85bafcaea2caff47065a936c1cb7fb53bbba7/img/example2.png)
