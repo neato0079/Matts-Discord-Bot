@@ -17,7 +17,7 @@ describe('postCommandsToDiscordBot', () => {
         // test
         const test = postCommandsToDiscordBot(promises);
           // assert
-        await expect(test.resolves)
+        expect(test.resolves);
     });
 
     test.todo('Handles a mix of resolved and rejected promises.');
