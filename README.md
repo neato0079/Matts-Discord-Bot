@@ -1,3 +1,6 @@
+# Matt's Discord Bot
+An assortment of slash commands to be used in the discord client. This code has been utilized to help plan an overseas vacation with some friends. More functionalities to come in the future!
+
 # Discord Bot Sequence Diagram
 ![alt text](https://raw.githubusercontent.com/neato0079/Matts-Discord-Bot/cab03f57b995753384ce7fb2a5389c33c92cb218/img/Discord-bot-flowchart.png)
 
