@@ -10,19 +10,15 @@ from dotenv import load_dotenv # allows us to interact with .env files
 load_dotenv()
 TOKEN = os.getenv('BOT_TOKEN')
 GUILD = os.getenv('GUILD_ID')
-print(f'GUILD ID: {type(GUILD)}')
+
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
-    print(list(client.guilds))
     for guild in client.guilds:
-        print(guild)
-        print(type(guild.id))
         if guild.id == int(GUILD):
-            print(f'{guild.name} == {GUILD}')
             break
 
     print(
@@ -30,14 +26,7 @@ async def on_ready():
         f'{guild.name}(id: {guild.id})'
     )
     await client.close()
-# @client.command()
-# async def shutdown(ctx):
-#     await ctx.bot.logout()
-
-
-
 
 
 client.run(TOKEN)
 
-exit()
