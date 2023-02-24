@@ -25,8 +25,15 @@ async def on_ready():
         f'{client.user} is connected to the following guild:\n'
         f'{guild.name}(id: {guild.id})'
     )
+    print('Members in current guild:')
+    print(client.event)
+    for member in guild.members:
+        print(member.name)
     await client.close()
 
+# @client.event
+# async def dm_client():
+#     await client.create_dm()
 
 client.run(TOKEN)
 
