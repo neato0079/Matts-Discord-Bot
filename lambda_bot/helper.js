@@ -61,28 +61,21 @@ const currentExchangeRate = async () => {
 const itJobDuration = () => {
   const date = require('date-and-time');
 
-
   const currentTime = new Date()
   const endTime = new Date("2023-07-22T07:00:00")
   const diff = date.subtract(currentTime, endTime);
   const daysDiff = diff.toDays();
   const daysLeft = Math.floor(daysDiff);
   const weeksLeft = Math.floor((daysLeft) / 7)
-  // console.log(lastDayCoolFormat)
 
-  // console.log(current)
   const hoursDiff = diff.toHours();
   const hoursLeft = Math.floor(hoursDiff - daysLeft * 24);
 
   const minDiff = diff.toMinutes();
   const minLeft = Math.floor(minDiff - Math.floor(hoursDiff) * 60);
-  // minDiff - hoursLeft * 60
 
-  // console.log(minLeft)
-  // console.log(`${daysLeft} day(s) ${hoursLeft}:${minLeft} left until job end!`)
-
-  console.log(`Time since IT job start:\nDays:${daysLeft}\nHrs:${hoursLeft}\nMin:${minLeft}`)
-  console.log(`Weeks completed ${weeksLeft - 1}`)
+  // console.log(`Time since IT job start:\nDays:${daysLeft}\nHrs:${hoursLeft}\nMin:${minLeft}`)
+  console.log(`Weeks completed: ${weeksLeft - 1}`)
 }
 
 module.exports = {
