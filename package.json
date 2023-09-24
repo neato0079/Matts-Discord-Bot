@@ -23,7 +23,8 @@
     "axios": "^1.1.0",
     "dayjs": "^1.11.5",
     "dotenv": "^16.0.3",
-    "tweetnacl": "^1.0.3"
+    "tweetnacl": "^1.0.3",
+    "date-and-time": "^3.0.2"
   },
   "devDependencies": {
     "@types/jest": "^29.2.0",
