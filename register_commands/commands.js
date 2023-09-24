@@ -41,6 +41,12 @@ let tripInfo = {
   'description': 'replies with all trip info ;/',
 }
 
+let itProgress = {
+  'name': 'IT-progress', // TODO: think of a cooler name
+  'type': 1,
+  'description': 'replies number of weeks completed at IT job',
+}
+
 let test = {
   'name': 'test', // TODO: think of a cooler name
   'type': 1,
@@ -53,7 +59,7 @@ const axiosPromises = [
 //   axios.post(url, JSON.stringify(weeksCountDownCommand), { headers: headers, }),
 //   axios.post(url, JSON.stringify(currentExchangeRate), { headers: headers, }),
 //   axios.post(url, JSON.stringify(tripInfo), { headers: headers, }),
-  axios.post(url, JSON.stringify(test), { headers: headers, })
+  axios.post(url, JSON.stringify(itProgress), { headers: headers, })
 ]
 
 // axios.all(axiosPromises)
