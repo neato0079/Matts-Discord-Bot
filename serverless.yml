@@ -2,7 +2,7 @@ service: discord
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: nodejs19.x
 
 functions:
   handle-discord-commands:
