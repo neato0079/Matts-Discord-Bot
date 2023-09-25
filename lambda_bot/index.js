@@ -76,6 +76,15 @@ exports.handler = async (event) => {
       })
   }
 
+  // Handle /it-job-progress Command
+  if (body.data.name == 'it-job-progress'){
+    const info = helper.itJobDuration()
+    return JSON.stringify({ 
+      "type": 4,  
+      "data": { "content": info }
+    })
+}
+
   // test auto command reg
   if (body.data.name == 'test'){
     return JSON.stringify({ 
