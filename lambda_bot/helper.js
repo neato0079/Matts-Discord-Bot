@@ -75,7 +75,7 @@ const itJobDuration = () => {
   const minLeft = Math.floor(minDiff - Math.floor(hoursDiff) * 60);
 
   // console.log(`Time since IT job start:\nDays:${daysLeft}\nHrs:${hoursLeft}\nMin:${minLeft}`)
-  console.log(`Weeks completed: ${weeksLeft - 1}`)
+  return `Weeks completed: ${weeksLeft - 1}`
 }
 
 module.exports = {
