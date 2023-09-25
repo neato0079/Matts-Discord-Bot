@@ -59,7 +59,7 @@ const axiosPromises = [
 //   axios.post(url, JSON.stringify(weeksCountDownCommand), { headers: headers, }),
 //   axios.post(url, JSON.stringify(currentExchangeRate), { headers: headers, }),
 //   axios.post(url, JSON.stringify(tripInfo), { headers: headers, }),
-  axios.post(url, JSON.stringify(itProgress), { headers: headers, })
+  // axios.post(url, JSON.stringify(itProgress), { headers: headers, })
 ]
 
 // axios.all(axiosPromises)
@@ -74,7 +74,7 @@ const postCommandsToDiscordBot = async (axiosPromises) => {
     .then(response => console.log(`Status:${response.status}`))
     .catch(error => console.log(error.response.data.errors.name._errors))
 }
-// postCommandsToDiscordBot(axiosPromises)
+postCommandsToDiscordBot(axiosPromises)
 // .catch(error => console.log(error))
 // .then(response => console.log(`Status:${response.status}`))
 // find out how to add countDownCommand to the .post
