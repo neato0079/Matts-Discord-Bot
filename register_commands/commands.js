@@ -42,7 +42,7 @@ let tripInfo = {
 }
 
 let itProgress = {
-  'name': 'IT-progress', // TODO: think of a cooler name
+  'name': 'it-job-progress', // TODO: think of a cooler name
   'type': 1,
   'description': 'replies number of weeks completed at IT job',
 }
@@ -72,9 +72,9 @@ const axiosPromises = [
 const postCommandsToDiscordBot = async (axiosPromises) => {
   axios.all(axiosPromises)
     .then(response => console.log(`Status:${response.status}`))
-    .catch(error => console.log(error))
+    .catch(error => console.log(error.response.data.errors.name._errors))
 }
-
+// postCommandsToDiscordBot(axiosPromises)
 // .catch(error => console.log(error))
 // .then(response => console.log(`Status:${response.status}`))
 // find out how to add countDownCommand to the .post
