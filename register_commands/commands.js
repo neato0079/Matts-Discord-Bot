@@ -59,7 +59,7 @@ const axiosPromises = [
 //   axios.post(url, JSON.stringify(weeksCountDownCommand), { headers: headers, }),
 //   axios.post(url, JSON.stringify(currentExchangeRate), { headers: headers, }),
 //   axios.post(url, JSON.stringify(tripInfo), { headers: headers, }),
-  // axios.post(url, JSON.stringify(itProgress), { headers: headers, })
+  // axios.post(url, JSON.stringify(itProgress), { headers: headers, })h
 ]
 
 // axios.all(axiosPromises)
