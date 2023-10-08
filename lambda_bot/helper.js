@@ -1,4 +1,5 @@
 const axios = require('axios').default;
+require('dotenv').config()
 // const axiosRetry = require('axios-retry');
 // const retry = require('retry')
 const dayjs = require('dayjs');
@@ -9,6 +10,9 @@ const currentTime = dayjs().subtract(7, 'h');
 const tripStart = dayjs('2022-12-30 00:00');
 const tripHasStarted = dayjs().isBefore(tripStart);
 const daysLeft = tripStart.diff(currentTime, 'days') + 1;
+
+const EXCH_R8T_KEY = process.env.EXCH_R8T_KEY
+// console.log(EXCH_R8T_KEY)
 
 const daysAndWeeksLeft = (defaultDays = daysLeft) => {
 
@@ -31,7 +35,8 @@ const countDown = () => {
 
 const currentExchangeRate = async () => {
 
-  const url = 'https://api.exchangerate.host/convert?from=USD&to=JPY';
+  // const url = 'https://api.exchangerate.host/convert?from=USD&to=JPY';
+  const url = `https://v6.exchangerate-api.com/v6/${EXCH_R8T_KEY}/latest/USD`
 
   return new Promise((resolve, reject) => {
     let NumberOfRetries = 3;
@@ -41,7 +46,9 @@ const currentExchangeRate = async () => {
           if (response.status !== 200) {
             reject(`BAD DATA! Received status code: ${response.status}\nData:${response.data}`);
           }
-          const USDtoJPY = response.data.result;
+          const USDtoJPY = response.data.conversion_rates.JPY
+          
+          // const USDtoJPY = response.data.result;
           resolve(`1 USD = ${USDtoJPY.toFixed(2)} JPY`);
         })
         .catch((error) => {
@@ -57,6 +64,8 @@ const currentExchangeRate = async () => {
     retry();
   })
 };
+
+// console.log(currentExchangeRate())
 
 const itJobDuration = () => {
   const date = require('date-and-time');
