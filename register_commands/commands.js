@@ -74,7 +74,7 @@ const postCommandsToDiscordBot = async (axiosPromises) => {
     .then(response => console.log(`Status:${response.status}`))
     .catch(error => console.log(error.response.data.errors.name._errors))
 }
-postCommandsToDiscordBot(axiosPromises)
+// postCommandsToDiscordBot(axiosPromises)
 // .catch(error => console.log(error))
 // .then(response => console.log(`Status:${response.status}`))
 // find out how to add countDownCommand to the .post
